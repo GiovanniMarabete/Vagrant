@@ -65,6 +65,22 @@ Vagrant.configure("2") do |config|
     end  
   end
 
+  config.vm.define "win12bis" do |win12bis|
+    win12bis.vm.box = "jptoto/Windows2012R2"
+    config.landrush.enabled = false
+    win12bis.vm.hostname = "win12"
+    win12bis.vm.communicator = "winrm"
+    # win12bis.vm.username = "vagrant"
+    # win12bis.vm.password = "vagrant"
+    win12bis.vm.network "private_network", ip: "192.168.33.70"
+    win12bis.vm.network "forwarded_port", guest: 80, host: 8087
+    #win12bis.vm.network "forwarded_port", guest: 443, host: 8444
+    win12bis.vm.provider "virtualbox" do |v|
+      v.memory = 2048
+      # v.cpus = 2
+    end  
+  end
+
 
 
   config.vm.provider "virtualbox" do |v|
