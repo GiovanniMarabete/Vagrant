@@ -1,0 +1,1 @@
+This folder contains different Vagrant files to support different Lab environments
